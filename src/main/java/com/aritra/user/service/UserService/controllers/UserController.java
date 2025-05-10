@@ -13,30 +13,16 @@ import java.util.List;
 @RequestMapping("/users")
 public class UserController {
 
-    @Autowired
-    private UserService userService;
+    @GetMapping("/api/users")
+   public User getUser( ){
 
-    //create user
-    @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody User user){
-          User user_01=userService.saveUser(user);
-          return ResponseEntity.status(HttpStatus.CREATED).body(user_01);
+       User user= new User();
+       user.setEmail("arindam@gmail.com");
+       user.setPhone("9456723456");
+       user.setFullName("Arindam DuttaBonik ");
+       user.setRole("CUSTOMER");
 
-    }
-    //get single user
-    @GetMapping("/{userId}")
-    public ResponseEntity<User> getSingle( @PathVariable  String userId){
-        User user=userService.getSingleUser(userId);
-      return ResponseEntity.ok(user);
-    }
-
-    //get all users
-
-    @GetMapping
-    public ResponseEntity<List<User>> getAllUsers( ) {
-        List<User> allUsers = userService.getAllUsers();
-
-        return ResponseEntity.ok(allUsers);
-    }
+       return user;
+   }
 }
 
