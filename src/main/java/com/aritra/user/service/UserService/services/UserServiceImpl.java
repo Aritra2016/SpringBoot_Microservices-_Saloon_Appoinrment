@@ -4,36 +4,31 @@ import com.aritra.user.service.UserService.entities.User;
 import com.aritra.user.service.UserService.exceptions.ResourceNotFoundException;
 import com.aritra.user.service.UserService.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
 
+@Service
 public class UserServiceImpl implements   UserService{
 
     @Autowired
     private UserRepository userRepository;
 
+
     @Override
     public User saveUser(User user) {
-        //generate random Userid
-        try{
-            String randomUserId = UUID.randomUUID().toString();
-            user.setUserId(randomUserId);
-            return userRepository.save(user);
-        }
-       catch (Exception e){
-            throw new ResourceNotFoundException("User with given userid is not found on server !!!!!");
-        }
+        return null;
     }
 
     @Override
     public List<User> getAllUsers() {
-        return userRepository.findAll();
+        return List.of();
     }
 
     @Override
     public User getSingleUser(String userId) {
-        return userRepository.findById(userId).orElseThrow(()-> new ResourceNotFoundException("User with given userid is not found on server !!!!!"+userId));
+        return null;
     }
 
     @Override

@@ -1,10 +1,7 @@
 package com.aritra.user.service.UserService.entities;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -22,17 +19,19 @@ public class User {
 
     //Columns or, Fields of User Table
     @Id
-    @Column (name="ID")
-    private String userId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    @Column(name="NAME")
+    private Long userid;
+
+
     private String fullName;
-    @Column(name="EMAIL")
+
+
     private String email;
-    @Column(name="ABOUT")
+
     private String phone;
 
-    @Column(name= "ROLE")
+
     private String role;
 
     @Column(name= "Created_At")
